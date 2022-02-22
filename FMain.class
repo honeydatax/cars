@@ -1,0 +1,77 @@
+' Gambas class file
+
+Public sizes As Float
+Public yy2 As Float
+Public mult As Float
+Public yyy As Integer
+Public yy As Integer
+Public xx As Integer
+Public img As Image
+Public Sub _new()
+
+End
+Public Sub DrawingArea1_Draw()
+Draw.Begin(DrawingArea1)
+Draw.FillRect(0, 0, DrawingArea1.Width, yy, Color.Gray)
+Draw.FillRect(0, yy, DrawingArea1.Width, DrawingArea1.Height, Color.Black)
+Draw.Foreground = Color.white
+Draw.FillColor = Color.Black
+Draw.LineStyle = Line.Solid
+Draw.Line(xx - DrawingArea1.Width / 2, DrawingArea1.Height, xx, yy)
+Draw.Line(xx, yy, xx + DrawingArea1.Width / 2, DrawingArea1.Height)
+Draw.LineStyle = Line.DashDotDot
+Draw.Line(xx, yy + yyy, xx, DrawingArea1.Height)
+Draw.Circle((DrawingArea1.Width / 2) + ((sizes / 2) * mult), yy2, sizes / 2)
+Draw.End
+DrawingArea1.Refresh(0, 0, DrawingArea1.Width, DrawingArea1.Height)
+Form.Refresh()
+End
+
+Public Sub Form_Show()
+DrawingArea1.Refresh(0, 0, Form.Width, Form.Height)    
+End
+
+
+Public Sub Form_KeyPress()
+  If Key.Code = 65361 Then xx = xx - 5
+  If Key.Code = 65363 Then xx = xx + 5
+  If yy > 260 Then yy = 260  
+  If yy < 20 Then yy = 20
+  If xx > DrawingArea1.Width - 20 Then xx = DrawingArea1.Width - 20
+  If xx < 20 Then xx = 20
+  If Key.Code = 65307 Then Me.Close()
+  'Print Key.Code
+End
+
+
+Public Sub form_Activate()
+xx = DrawingArea1.Width / 2
+Me.Title = "press arrow keys to drive"
+End
+
+Public Sub Form_Open()
+yy = 20
+yyy = 1
+yy2 = yy
+sizes = 0.2
+mult = -1
+Timer1.Enabled = True
+End
+
+
+
+Public Sub Timer1_Timer()
+yyy = yyy + 1
+If yyy > 8 Then yyy = 0 
+sizes = sizes + sizes
+yy2 = yy2 + sizes
+If yy2 > DrawingArea1.Height + sizes / 2 Then
+   yy2 = yy
+   sizes = 0.2
+   If mult = -1 Then
+     mult = 1
+   Else
+     mult = -1
+   Endif
+End If 
+End

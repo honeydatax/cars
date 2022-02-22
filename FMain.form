@@ -1,0 +1,12 @@
+# Gambas Form File 3.0
+
+{ Form Form
+  MoveScaled(0,0,50,50)
+  { DrawingArea1 DrawingArea
+    MoveScaled(0,1,50,49)
+    { Timer1 #Timer
+      #MoveScaled(10,8)
+      Delay = 300
+    }
+  }
+}
