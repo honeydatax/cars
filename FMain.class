@@ -21,7 +21,7 @@ Draw.Line(xx - DrawingArea1.Width / 2, DrawingArea1.Height, xx, yy)
 Draw.Line(xx, yy, xx + DrawingArea1.Width / 2, DrawingArea1.Height)
 Draw.LineStyle = Line.DashDotDot
 Draw.Line(xx, yy + yyy, xx, DrawingArea1.Height)
-Draw.Circle((DrawingArea1.Width / 2) + ((sizes / 2) * mult), yy2, sizes / 2)
+Draw.Circle(xx + ((sizes / 2) * mult), yy2, sizes / 2)
 Draw.End
 DrawingArea1.Refresh(0, 0, DrawingArea1.Width, DrawingArea1.Height)
 Form.Refresh()
