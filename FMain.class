@@ -11,6 +11,7 @@ Public Sub _new()
 
 End
 Public Sub DrawingArea1_Draw()
+DrawingArea1.Foreground = Color.White
 Draw.Begin(DrawingArea1)
 Draw.FillRect(0, 0, DrawingArea1.Width, yy, Color.Gray)
 Draw.FillRect(0, yy, DrawingArea1.Width, DrawingArea1.Height, Color.Black)
@@ -21,6 +22,8 @@ Draw.Line(xx - DrawingArea1.Width / 2, DrawingArea1.Height, xx, yy)
 Draw.Line(xx, yy, xx + DrawingArea1.Width / 2, DrawingArea1.Height)
 Draw.LineStyle = Line.DashDotDot
 Draw.Line(xx, yy + yyy, xx, DrawingArea1.Height)
+Draw.FillColor = Color.White
+Draw.FillStyle = 1
 Draw.Circle(xx + ((sizes / 2) * mult), yy2, sizes / 2)
 Draw.End
 DrawingArea1.Refresh(0, 0, DrawingArea1.Width, DrawingArea1.Height)
